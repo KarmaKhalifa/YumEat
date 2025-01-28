@@ -29,8 +29,8 @@ let bannerData = {
   img: "/assets/img_banner.png",
   bgImg: "/assets/bg-banner.png",
 };
-divImg.setAttribute("id","divImage");
-img.setAttribute("id","image");
+divImg.setAttribute("id", "divImage");
+img.setAttribute("id", "image");
 divImg.appendChild(img);
 title.append(bannerData.title);
 text.append(bannerData.text);
@@ -45,6 +45,37 @@ divImg.appendChild(bgImg);
 banner.appendChild(div);
 banner.appendChild(divImg);
 
+// start banner
 
+let numberData = {
+  paragraph: "Savlngs",
+  heading: "1710+",
+  paragraphTwo: "50+",
+  headingTwo: "Branches",
+  paragraphThree: "1788+",
+  headingThree: "Reviews",
+  paragraphFour: "128+",
+  headingFour: "items%",
+};
+const items = `
+  <div class="item">
+    <h2>1710+</h2>
+    <p>Savings</p>
+  </div>
+  <div class="item-one">
+    <h2>50+</h2>
+    <p>Branches</p>
+  </div>
+  <div class="item-two">
+    <h2>1788+</h2>
+    <p>Reviews</p>
+  </div>
+  <div class="item-three">
+    <h2>128+</h2>
+    <p>Items</p>
+  </div>
+`;
 
+const container = document.getElementById("itemNUM");
 
+container.innerHTML = items;

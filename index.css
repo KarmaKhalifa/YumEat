@@ -104,7 +104,6 @@ header .icons-header {
 }
 .banner #divImage {
   position: relative;
-
 }
 .banner #divImage #image {
   position: absolute;
@@ -113,8 +112,12 @@ header .icons-header {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .banner div {
   width: 40%;
@@ -139,4 +142,33 @@ header .icons-header {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 30px;
+}
+/* start item-number */
+#itemNUM {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(154 152 152 / 20%);
+  margin-block: 50px;
+  padding-block: 12px;
+}
+#itemNUM .item {
+}
+#itemNUM .item h2,
+.item-one h2,
+.item-two h2,
+.item-three h2 {
+  font-size: 25px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+#itemNUM .item p,
+.item-one p,
+.item-two p,
+.item-three p {
+  font-size: 16px;
+  color: black;
+  margin-top: 10px;
+  font-weight: bold;
 }
