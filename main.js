@@ -30,6 +30,7 @@ let bannerData = {
   bgImg: "/assets/bg-banner.png",
 };
 divImg.setAttribute("id", "divImage");
+div.setAttribute("class","des")
 img.setAttribute("id", "image");
 divImg.appendChild(img);
 title.append(bannerData.title);
@@ -79,3 +80,29 @@ const items = `
 const container = document.getElementById("itemNUM");
 
 container.innerHTML = items;
+// item-images
+
+let itemContainer = document.getElementById("multi-img");
+
+let itemImages = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1630362023370-702069b26ef6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D",
+  },
+  {
+    image:
+      "https://plus.unsplash.com/premium_photo-1695044277556-dc0956b68d30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDc4fHx8ZW58MHx8fHx8",
+  },
+];
+
+itemImages.forEach((item, i) => {
+  itemContainer.innerHTML += `
+  <div class="item image-${i + 1}">
+  <div class="overlay"><button>اكتشف الان</button></div>
+   <img src= "${item.image}" alt="image">
+  </div>`;
+});
