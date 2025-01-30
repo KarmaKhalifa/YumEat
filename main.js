@@ -30,7 +30,7 @@ let bannerData = {
   bgImg: "/assets/bg-banner.png",
 };
 divImg.setAttribute("id", "divImage");
-div.setAttribute("class","des")
+div.setAttribute("class", "des");
 img.setAttribute("id", "image");
 divImg.appendChild(img);
 title.append(bannerData.title);
@@ -105,4 +105,93 @@ itemImages.forEach((item, i) => {
   <div class="overlay"><button>اكتشف الان</button></div>
    <img src= "${item.image}" alt="image">
   </div>`;
+});
+
+// product
+const productContainer = document.getElementById("product");
+let meals = [
+  {
+    name: "بيض بالمطاعم والخضار",
+    image: "assets/omlite-imag.png",
+    price: 120,
+    oldPrice: 135,
+    rating: 4.5,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "مكرونة بالمطاعم والريحان",
+    image: "assets/makrona-imag.png",
+    price: 135,
+    oldPrice: null,
+    rating: 3.5,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "دجاج مشوي مع أعشاب",
+    image: "assets/bsla.png",
+    price: 170,
+    oldPrice: 190,
+    rating: 4,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "مكرونة بالصلصة الحمراء",
+    image: "assets/delicious-pasta-img.png",
+    price: 165,
+    oldPrice: 180,
+    rating: 4,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "بيتزا بالخضار واللحم",
+    image: "assets/betza-imag.png",
+    price: 180,
+    oldPrice: null,
+    rating: 5,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "كاري الحمص الحار",
+    image: "assets/delicious-chicken-imag.png",
+    price: 170,
+    oldPrice: null,
+    rating: 4,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "سلطة السبانخ مع اللحم",
+    image: "assets/image__4_-tona-salat-imag.png",
+    price: 110,
+    oldPrice: null,
+    rating: 4.5,
+    buttonText: "أضف إلى العربة",
+  },
+  {
+    name: "دجاج مشوي مع الخضار",
+    image: "assets/delicious-chicken-biryani-7lw.png",
+    price: 165,
+    oldPrice: 180,
+    rating: 4.5,
+    buttonText: "أضف إلى العربة",
+  },
+];
+let products = document.getElementById("products");
+let listProduct = document.querySelector(".products-list");
+meals.forEach((meal) => {
+  listProduct.innerHTML += `
+  <div class="meal">
+      <img src="${meal.image}" alt="${meal.name}">
+      <h3>${meal.name}</h3>
+      <div class="rating">${"⭐".repeat(Math.round(meal.rating))}</div>
+      
+      <div class="total-des">
+      <p class="price">ج.م ${meal.price} ${
+    meal.oldPrice ? `<span class="old-price">ج.م ${meal.oldPrice}</span>` : ""
+  }</p>
+ 
+      <button>${meal.buttonText}</button>
+      </div>
+       </div>
+  
+  `;
 });
