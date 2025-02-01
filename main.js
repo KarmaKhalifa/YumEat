@@ -244,11 +244,10 @@ weekendOffers.forEach((offer) => {
    </div>
   
    <div class="rating-offers">${"⭐".repeat(Math.round(offer.rating))}</div>
-    <div class="price-list">
   
     <div class="discounted-price">
-    <p class="discount">${offer.discountedPrice} ${offer.currency}</p>
-    <p  class="original">${offer.originalPrice} ${offer.currency}</p>
+        <p class="discount">${offer.discountedPrice} ${offer.currency}</p>
+        <p  class="original">${offer.originalPrice} ${offer.currency}</p>
     </div>
     <div class="time-list">
     <div class="number-time">
