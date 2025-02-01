@@ -13,6 +13,7 @@ body {
   font-family: "Tajawal", serif;
   font-weight: 400;
   font-style: normal;
+  overflow-x: hidden;
 }
 .container {
   width: 100%;
@@ -354,7 +355,7 @@ header .icons-header svg:hover path {
   height: 100%;
 }
 #products h2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   margin-block: 20px;
   text-align: center;
@@ -494,8 +495,8 @@ header .icons-header svg:hover path {
   .des-meal .price {
     font-size: 12px;
   }
-  .old-price {
-    font-size: 8px;
+  .des-meal .old-price  {
+    font-size: 9px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -509,9 +510,9 @@ header .icons-header svg:hover path {
 }
 
 #offer-weekly h2 {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
-  margin-block: 50px;
+  margin-block: 30px;
   text-align: center;
 }
 .offer-card {
@@ -525,13 +526,14 @@ header .icons-header svg:hover path {
   border-radius: 12px;
   display: flex;
   flex-direction: row-reverse;
-  gap: 20px;
-  padding: 20px;
+  gap: 5px;
+  padding: 15px;
 }
 .offer-card .card-double .behind {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
 }
 .offer-card .like-img {
   width: 20px;
@@ -571,46 +573,51 @@ header .icons-header svg:hover path {
 .discounted-price {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .discounted-price .discount {
-  font-size: 15px;
+  font-size: 16px;
+  text-decoration: line-through;
   color: gray;
 }
 .discounted-price .original {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   color: var(--primary-color);
 }
 .number-time {
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .time-list {
-  margin-left: -48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin:auto ;
+  width: fit-content;
 }
 .add-to-cart {
   color: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 8px;
-  padding: 10px 50px;
+  padding: 10px 60px;
   background-color: var(--primary-color);
   cursor: pointer;
 }
 .day {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center
 }
 .hours {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center
 }
 .minutes {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center
 }
 @media (max-width: 767px) {
   .offer-card {
@@ -619,21 +626,21 @@ header .icons-header svg:hover path {
     flex-direction: column;
   }
   .offer-card .card-double .behind {
-    gap: 63px;
     align-items: center;
   }
   .offer-card .card-double .behind h3 {
-    font-size: 8px;
+    font-size: 12px;
     font-weight: bold;
   }
   .rating-offers {
     font-size: 10px;
   }
+  
   .discounted-price .discount {
-    font-size: 8px;
+    font-size: 14px;
   }
   .discounted-price .original {
-    font-size: 11px;
+    font-size: 16px;
     color: var(--primary-color);
     font-weight: bold;
   }
@@ -641,9 +648,23 @@ header .icons-header svg:hover path {
     padding: 12px 50px;
   }
   #offer-weekly h2 {
-    text-align: end;
+  font-size:20px ;
+  }
+  .number-day {
+    font-size: 10px;
+    font-weight: medium;
+  }
+  .number-hours {
+    font-size: 8px;
+    font-weight: medium;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .offer-card{
+    gap: 40px;
+  }
+}
+
 /* second banner */
 .banner-img {
   position: relative;
@@ -658,22 +679,22 @@ header .icons-header svg:hover path {
 }
 .banner-img .body-specialOffer {
   position: absolute;
-  max-width: 400px;
+  max-width: 550px;
   z-index: 1;
   margin-inline: 40px;
 }
 
 .banner-img .body-specialOffer h3 {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
 }
 .banner-img .body-specialOffer p {
-  font-size: 20px;
+  font-size: 25px;
   color: #fff;
   text-align: center;
-  margin-block: 10px;
+  margin-block: 15px;
 }
 
 .banner-img .body-specialOffer button {
@@ -683,6 +704,25 @@ header .icons-header svg:hover path {
   border: none;
   padding: 10px 40px;
   display: block;
+  font-size: 16px;
   margin-top: 30px;
   margin: auto;
+}
+
+@media (max-width: 767px) {
+  .banner-img .body-specialOffer {
+    max-width: 250px;
+    margin-inline: 20px;
+  }
+  .banner-img .body-specialOffer h3 {
+    font-size: 15px;
+  }
+  .banner-img .body-specialOffer p {
+    font-size: 12px;
+    margin-block: 5px;
+  }
+  .banner-img .body-specialOffer button {
+    font-size: 12px;
+    padding: 7px 30px;
+  }
 }
