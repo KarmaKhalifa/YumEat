@@ -69,17 +69,17 @@ let itemContainer = document.getElementById("multi-img");
 
 let itemImages = [
   {
-    title:"توست صحي بالأفوكادو والبيض المسلوق",
+    title: "توست صحي بالأفوكادو والبيض المسلوق",
     image:
       "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
-    title:"وجبة كلاسيكية: برجر بالجبن مع رقائق البطاطس وحساء الطماطم",
+    title: "وجبة كلاسيكية: برجر بالجبن مع رقائق البطاطس وحساء الطماطم",
     image:
       "https://images.unsplash.com/photo-1630362023370-702069b26ef6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D",
   },
   {
-    title:"وجبة آسيوية لذيذة: دجاج مقرمش مع الأرز وعيدان الطعام",
+    title: "وجبة آسيوية لذيذة: دجاج مقرمش مع الأرز وعيدان الطعام",
     image:
       "https://plus.unsplash.com/premium_photo-1695044277556-dc0956b68d30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDc4fHx8ZW58MHx8fHx8",
   },
@@ -289,3 +289,112 @@ specialOffer.innerHTML += `
 <button>  ${specialOfferData.btnSpecial} </button>
 </div>
 `;
+
+// opinion-customer
+
+let opinionContainer = document.querySelector(".opinion-customer");
+
+let review = [
+  {
+    nameReview: "مؤمن السيد",
+    jobTitle: "مصمم ديكور",
+    ratingReview: 5,
+    reviewText:
+      "خدمة رائعة وأكل لا يُقاوم! أحببت تنوع القائمة والجودة العالية للوجبات.",
+    profileImage:
+      "https://images.unsplash.com/photo-1623605931891-d5b95ee98459?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
+  },
+  {
+    nameReview: "محمد ابراهيم",
+    jobTitle: "دكتور جراحه",
+    ratingReview: 5,
+    reviewText:
+      "كل شيء مثالي! الطعام طازج وساخن، والتغليف أنيق جدًا. سأطلب مرة أخرى بالتأكيد!",
+    profileImage:
+      "https://images.unsplash.com/photo-1642978277577-83c6ceac4820?w=600&a",
+  },
+  {
+    nameReview: "ساري احمد",
+    jobTitle: "مصممة جرافيك",
+    ratingReview: 5,
+    reviewText:
+      "أفضل تجربة طعام على الإطلاق! الأكل لذيذ والتوصيل سريع، والخدمة أكثر من رائعة!",
+    profileImage:
+      "https://images.unsplash.com/photo-1564460576398-ef55d99548b2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
+  },
+  {
+    nameReview: "مؤمن السيد",
+    jobTitle: "مصمم ديكور",
+    ratingReview: 5,
+    reviewText:
+      "خدمة رائعة وأكل لا يُقاوم! أحببت تنوع القائمة والجودة العالية للوجبات.",
+    profileImage:
+      "https://images.unsplash.com/photo-1623605931891-d5b95ee98459?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
+  },
+  {
+    nameReview: "محمد ابراهيم",
+    jobTitle: "دكتور جراحه",
+    ratingReview: 5,
+    reviewText:
+      "كل شيء مثالي! الطعام طازج وساخن، والتغليف أنيق جدًا. سأطلب مرة أخرى بالتأكيد!",
+    profileImage:
+      "https://images.unsplash.com/photo-1642978277577-83c6ceac4820?w=600&a",
+  },
+  {
+    nameReview: "ساري احمد",
+    jobTitle: "مصممة جرافيك",
+    ratingReview: 5,
+    reviewText:
+      "أفضل تجربة طعام على الإطلاق! الأكل لذيذ والتوصيل سريع، والخدمة أكثر من رائعة!",
+    profileImage:
+      "https://images.unsplash.com/photo-1564460576398-ef55d99548b2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
+  },
+];
+review.forEach((opinion) => {
+  let opinionContainer = document.querySelector(".opinion-customer");
+  opinionContainer.innerHTML += `
+  <div class="opinion-card swiper-slide">
+  <div class="person">
+  <img src="${opinion.profileImage}"/>
+  <div class="name-person">
+  <h2>${opinion.nameReview}</h2> 
+  <h4>${opinion.jobTitle}</h4>
+  <div class="rating-opinion">${"⭐".repeat(
+    Math.round(opinion.ratingReview)
+  )}</div>
+  </div>
+  </div>
+  <div class="text-opinion">
+       <p>${opinion.reviewText}</p>
+       </div>
+       </div>
+  `;
+});
+
+const swiper = new Swiper(".swiper", {
+  // Default parameters
+  slidesPerView: 3,
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  // Responsive breakpoints
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  },
+});
