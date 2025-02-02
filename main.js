@@ -374,7 +374,7 @@ review.forEach((opinion) => {
 const swiper = new Swiper(".swiper", {
   // Default parameters
   slidesPerView: 3,
-  spaceBetween: 10,
+  spaceBetween: 30,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -384,12 +384,12 @@ const swiper = new Swiper(".swiper", {
     // when window width is >= 320px
     320: {
       slidesPerView: 1,
-      spaceBetween: 20,
+      spaceBetween: 10,
     },
     // when window width is >= 480px
     480: {
       slidesPerView: 1,
-      spaceBetween: 20,
+      spaceBetween: 10,
     },
     // when window width is >= 640px
     640: {
@@ -398,3 +398,76 @@ const swiper = new Swiper(".swiper", {
     },
   },
 });
+// footer
+const websiteData = {
+  about: {
+    imgWebsite: "/assets/logo.png",
+    socialMedia: "تابعنا علي ",
+    snapchat: "fa-brands fa-snapchat",
+    instagram: "fa-brands fa-instagram",
+    twitter: "fa-brands fa-twitter",
+    facebook: "fa-brands fa-facebook-f",
+  },
+  conected: {
+    call: "للتواصل ",
+    phone: "01026191645",
+    mobile: "01113456789",
+    whatsapp: "واتساب",
+    whatsappPhone: "موبايل ",
+  },
+  url: {
+    links: " روابط ",
+    aboutUs: "من نحن",
+    privacyPolicy: "سياسة الخصوصية",
+    termsAndConditions: "الشروط والأحكام",
+    techSupport: "الدعم الفني",
+  },
+  accounts: {
+    myAccount: "حسابي",
+    account: "حسابي",
+    cart: "سلة المشتريات",
+    favorites: "المفضلة",
+  },
+};
+
+let footerContainer = document.querySelector(".footer");
+
+footerContainer.innerHTML += `
+  <div class="myAccount">
+  <h2> ${websiteData.accounts.myAccount}</h2>
+  <p>${websiteData.accounts.account}</p>
+  <p>${websiteData.accounts.cart}</p>
+  <p>${websiteData.accounts.favorites}</p>
+  </div>
+  <div class="links">
+  <h2>${websiteData.url.links}</h2>
+  <p>${websiteData.url.aboutUs}</p>
+  <p>${websiteData.url.techSupport}</p>
+  <p>${websiteData.url.privacyPolicy}</p>
+  <p>${websiteData.url.termsAndConditions}</p>
+  </div>
+  
+  <div class="contact">
+  <h2>${websiteData.conected.call}</h2>
+ <div class="call-phone">
+  <p class="whatsapp">${websiteData.conected.whatsappPhone}</p>
+   <p>${websiteData.conected.mobile}</p>
+   </div>
+   <div class="call-mobile">
+   <p class="whatsapp">${websiteData.conected.whatsapp}</p>
+    <p>${websiteData.conected.phone}</p>
+    </div>
+  </div>
+  <div class="socialMedia">
+  <img src="${websiteData.about.imgWebsite}"/>
+  <div class="des-social">
+  <p>${websiteData.about.socialMedia}</p>
+  <div class="links-social">
+  <a href="#"><i class="${websiteData.about.facebook}"></i></a>
+  <a href="#"><i class="${websiteData.about.twitter}"></i></a>
+  <a href="#"><i class="${websiteData.about.instagram}"></i></a>
+  <a href="#"><i class="${websiteData.about.snapchat}"></i></a>
+  </div>
+  </div>
+   </div>
+  `;

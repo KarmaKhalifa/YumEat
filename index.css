@@ -778,7 +778,7 @@ header .icons-header svg:hover path {
   margin-top: 15px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .name-person {
@@ -819,5 +819,132 @@ header .icons-header svg:hover path {
   .icon {
     top: 50px;
     left: 20px;
+  }
+}
+/* footer */
+.footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  margin-block: 30px;
+}
+
+.footer .myAccount {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  
+}
+.footer .myAccount h2,
+.links h2,
+.contact h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.footer .myAccount p {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: gray;
+}
+.footer .myAccount p:hover {
+  color: var(--primary-color);
+}
+.footer .links {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 5px;
+}
+
+.footer .links p {
+  font-size: 18px;
+  color: gray;
+}
+.footer .links p:hover {
+  color: var(--primary-color);
+}
+.footer .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 5px;
+}
+.footer .contact p {
+  font-size: 20px;
+}
+.whatsapp {
+  color: gray;
+  font-size: 20px;
+}
+.footer .contact p:hover {
+  color: var(--primary-color);
+}
+.footer .contact .call-phone {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.footer .contact .call-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.footer .socialMedia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.socialMedia p {
+  font-size: 18px;
+  font-weight: bold;
+}
+.socialMedia .links-social {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 30px;
+}
+.socialMedia .links-social a {
+  text-decoration: none;
+  color: gray;
+}
+.socialMedia .links-social a:hover {
+  color: var(--primary-color);
+}
+.socialMedia .des-social {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  gap: 10px;
+}
+@media (max-width: 767px) {
+  .footer {
+    flex-direction: column-reverse;
+    align-items: end;
+    padding-inline: 50px;
+    gap: 12px;
+  }
+  .footer .myAccount h2,
+  .links h2,
+  .contact h2 {
+    font-size: 20px;
+  }
+
+  .footer .myAccount p,
+  .links p,
+  .contact p {
+    font-size: 14px;
+  }
+
+  .socialMedia .links-social a {
+    font-size: 14px;
+  }
+  .footer .socialMedia {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
   }
 }
