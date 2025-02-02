@@ -6,10 +6,16 @@ let close = document.querySelector(".fa-xmark");
 menu.addEventListener("click", () => {
   sideMenu.style.width = "250px";
   parentMenu.style.visibility = "visible";
+  sideMenu.style.padding="40px";
 });
-
+parentMenu.addEventListener("click", () => {
+  sideMenu.style.width = "0px";
+  parentMenu.style.visibility = "hidden";
+  sideMenu.style.padding = "0px";
+});
 close.addEventListener("click", () => {
   sideMenu.style.width = "0px";
+  sideMenu.style.padding = "0px";
   parentMenu.style.visibility = "hidden";
 });
 
@@ -174,9 +180,9 @@ let meals = [
 ];
 let products = document.getElementById("products");
 let listProduct = document.querySelector(".products-list");
-meals.forEach((meal) => {
+meals.forEach((meal,index) => {
   listProduct.innerHTML += `
-  <div class="meal">
+  <div class="meal" onclick="getProduct(${index})">
       <img src="${meal.image}" alt="${meal.name}">
       <div class="des-meal">
       <h3>${meal.name}</h3>
@@ -195,6 +201,12 @@ meals.forEach((meal) => {
        </div>
        `;
 });
+
+function getProduct(id){
+console.log(meals[id]);
+}
+
+
 let weeklyContainer = document.querySelector(".offer-card");
 const weekendOffers = [
   {
@@ -221,9 +233,9 @@ const weekendOffers = [
     originalPrice: 200,
     discountedPrice: 140,
     currency: "ج.م",
-    days: 20,
-    hours: 16,
-    minutes: 55,
+    days: 14,
+    hours: 13,
+    minutes: 35,
     numDay: "يوم",
     hoursDay: "ساعه",
     minutesDay: "دقيقه",

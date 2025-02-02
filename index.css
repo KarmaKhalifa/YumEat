@@ -8,6 +8,9 @@
   padding: 0;
   margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: #efefef;
   font-family: "Tajawal", serif;
@@ -29,8 +32,9 @@ body {
   position: fixed;
   width: 100%;
   visibility: hidden;
-  transition: 0.7;
+  transition: visibility 0.4s ease;
   z-index: 110;
+  overflow: hidden;
 }
 .parent-menu #side-Menu {
   background: white;
@@ -39,7 +43,7 @@ body {
   padding: 40px;
   position: absolute;
   right: 0;
-  transition: 0.3s;
+  transition:all 0.3s;
 }
 .parent-menu #side-Menu nav {
   display: flex;
@@ -52,6 +56,9 @@ body {
   color: black;
   font-size: 20px;
   margin-left: 5px;
+}
+.parent-menu #side-Menu nav a:hover {
+  color: var(--primary-color);
 }
 .parent-menu #side-Menu i {
   position: absolute;
@@ -550,7 +557,7 @@ header .icons-header svg:hover path {
 }
 .number-hours {
   color: gray;
-  font-size: 12px;
+  font-size: 14px;
 }
 .price-list {
   display: flex;
@@ -645,7 +652,7 @@ header .icons-header svg:hover path {
     font-size: 14px;
   }
   .discounted-price .original {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--primary-color);
     font-weight: bold;
   }
@@ -656,11 +663,11 @@ header .icons-header svg:hover path {
     font-size: 20px;
   }
   .number-day {
-    font-size: 10px;
+    font-size: 16px;
     font-weight: medium;
   }
   .number-hours {
-    font-size: 8px;
+    font-size: 12px;
     font-weight: medium;
   }
 }
@@ -734,6 +741,10 @@ header .icons-header svg:hover path {
   .banner-img .body-specialOffer button {
     font-size: 12px;
     padding: 7px 30px;
+  }
+  .banner-img .bg-img {
+    height: 180px;
+    object-fit: cover;
   }
 }
 /* اراء العملاء */
@@ -832,11 +843,13 @@ header .icons-header svg:hover path {
   }
 }
 /* footer */
+footer {
+  background-color: white;
+}
 .footer {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-evenly;
-  background-color: white;
   gap: 20px;
   padding-block: 30px;
   margin-top: 40px;
@@ -872,6 +885,7 @@ header .icons-header svg:hover path {
 .footer .links p {
   font-size: 18px;
   color: gray;
+  transition: 0.3s;
 }
 .footer .links p:hover {
   color: var(--primary-color);
@@ -884,6 +898,7 @@ header .icons-header svg:hover path {
 }
 .footer .contact p {
   font-size: 20px;
+  transition: 0.3s;
 }
 .whatsapp {
   color: gray;
@@ -920,9 +935,12 @@ header .icons-header svg:hover path {
 .socialMedia .links-social a {
   text-decoration: none;
   color: gray;
+  transition: all 0.3s ease;
+  font-size: 20px;
 }
 .socialMedia .links-social a:hover {
   color: var(--primary-color);
+  transform: scale(1.2);
 }
 .socialMedia .des-social {
   display: flex;
@@ -950,15 +968,16 @@ header .icons-header svg:hover path {
     font-size: 14px;
   }
 
-  .socialMedia .links-social a {
-    font-size: 14px;
-  }
   .footer .socialMedia {
     display: flex;
     flex-direction: column;
     align-items: end;
     gap: 15px;
     width: 100%;
+  }
+
+  .socialMedia .des-social {
+    gap: 15px;
   }
   .footer .socialMedia img {
     margin: auto;
