@@ -13,7 +13,7 @@ parentMenu.addEventListener("click", () => {
   parentMenu.style.visibility = "hidden";
   sideMenu.style.padding = "0px";
 });
-close.addEventListener("click", () => {
+close?.addEventListener("click", () => {
   sideMenu.style.width = "0px";
   sideMenu.style.padding = "0px";
   parentMenu.style.visibility = "hidden";
@@ -182,8 +182,9 @@ let products = document.getElementById("products");
 let listProduct = document.querySelector(".products-list");
 meals.forEach((meal,index) => {
   listProduct.innerHTML += `
+ 
   <div class="meal" onclick="getProduct(${index})">
-      <img src="${meal.image}" alt="${meal.name}">
+     <a href="/product.html"> <img src="${meal.image}" alt="${meal.name}"></a>
       <div class="des-meal">
       <h3>${meal.name}</h3>
       <div class="rating">${"⭐".repeat(Math.round(meal.rating))}</div>
@@ -483,3 +484,4 @@ footerContainer.innerHTML += `
   </div>
    </div>
   `;
+
