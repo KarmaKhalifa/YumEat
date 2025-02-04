@@ -398,6 +398,7 @@ header .icons-header svg:hover path {
   animation: alit 4s ease-in-out infinite paused;
   height: 60%;
   object-fit: contain;
+  filter: drop-shadow(0px 0px 10px rgba(128, 128, 128, 0.639));
 }
 .meal img:hover {
   animation-play-state: running;
@@ -436,7 +437,7 @@ header .icons-header svg:hover path {
   border: none;
   border-radius: 5px;
   margin-left: auto;
-  /* padding-inline: 20px; */
+  font-weight: bold;
   transition: all 0.3s ease;
   display: flex;
   justify-content: center;
@@ -478,6 +479,7 @@ header .icons-header svg:hover path {
   }
   .meal img {
     height: 50%;
+   
   }
   .meal .des-meal {
     height: 55%;
@@ -501,10 +503,10 @@ header .icons-header svg:hover path {
   }
 
   .des-meal .price {
-    font-size: 12px;
+    font-size: 18px;
   }
   .des-meal .old-price {
-    font-size: 9px;
+    font-size: 16px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -569,6 +571,7 @@ header .icons-header svg:hover path {
 .offer-card .like2-img {
   object-fit: contain;
   width: 40%;
+  filter: drop-shadow(0px 0px 10px rgba(128, 128, 128, 0.639));
 }
 .card-body {
   width: 60%;
@@ -607,6 +610,7 @@ header .icons-header svg:hover path {
 .add-to-cart {
   color: rgba(255, 255, 255, 0.9);
   border: none;
+  font-weight: bold;
   border-radius: 8px;
   padding: 10px 60px;
   background-color: var(--primary-color);
@@ -714,6 +718,7 @@ header .icons-header svg:hover path {
   color: #fff;
   background-color: var(--primary-color);
   border-radius: 8px;
+  font-weight: bold;
   border: none;
   padding: 10px 40px;
   display: block;

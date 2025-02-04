@@ -6,7 +6,7 @@ let close = document.querySelector(".fa-xmark");
 menu.addEventListener("click", () => {
   sideMenu.style.width = "250px";
   parentMenu.style.visibility = "visible";
-  sideMenu.style.padding="40px";
+  sideMenu.style.padding = "40px";
 });
 parentMenu.addEventListener("click", () => {
   sideMenu.style.width = "0px";
@@ -112,7 +112,8 @@ let meals = [
     oldPrice: 135,
     currency: "ج.م",
     rating: 4.5,
-    buttonText: "أضف إلى العربة",
+    description:
+      "طبق شهي من البيض المطهو مع تشكيلة متنوعة من الخضار الطازجة، مناسب للإفطار الصحي.",
   },
   {
     name: "مكرونة بالمطاعم والريحان",
@@ -121,7 +122,8 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 3.5,
-    buttonText: "أضف إلى العربة",
+    description:
+      "مكرونة إيطالية مطهية مع صلصة الطماطم الطازجة وأوراق الريحان العطرية لوجبة غنية بالنكهة.",
   },
   {
     name: "دجاج مشوي مع أعشاب",
@@ -130,7 +132,8 @@ let meals = [
     oldPrice: 190,
     currency: "ج.م",
     rating: 4,
-    buttonText: "أضف إلى العربة",
+    description:
+      "قطع دجاج مشوية بعناية مع توابل الأعشاب الطازجة، تقدم مع طبق جانبي من الخضار المشوية.",
   },
   {
     name: "مكرونة بالصلصة الحمراء",
@@ -139,7 +142,8 @@ let meals = [
     oldPrice: 180,
     currency: "ج.م",
     rating: 4,
-    buttonText: "أضف إلى العربة",
+    description:
+      "مكرونة شهية مغمورة في صلصة الطماطم الحمراء الغنية، مضاف إليها التوابل الإيطالية التقليدية.",
   },
   {
     name: "بيتزا بالخضار واللحم",
@@ -148,7 +152,8 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 5,
-    buttonText: "أضف إلى العربة",
+    description:
+      "بيتزا محضرة بعجينة طرية مع طبقة غنية من الجبن، الخضار الطازجة، وقطع اللحم الشهية.",
   },
   {
     name: "كاري الحمص الحار",
@@ -157,7 +162,8 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 4,
-    buttonText: "أضف إلى العربة",
+    description:
+      "طبق نباتي مميز من الحمص المطهو بصلصة الكاري الحارة، مضاف إليه مزيج من البهارات الهندية العطرية.",
   },
   {
     name: "سلطة السبانخ مع اللحم",
@@ -166,7 +172,8 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 4.5,
-    buttonText: "أضف إلى العربة",
+    description:
+      "سلطة طازجة من السبانخ الغني بالعناصر الغذائية، مضاف إليها قطع اللحم المشوي والتتبيلة المميزة.",
   },
   {
     name: "دجاج مشوي مع الخضار",
@@ -175,16 +182,18 @@ let meals = [
     oldPrice: 180,
     currency: "ج.م",
     rating: 4.5,
-    buttonText: "أضف إلى العربة",
+    description:
+      "وجبة متكاملة من الدجاج المشوي بتتبيلة مميزة، مقدمة مع الخضار المشوية لمن يبحث عن طعام صحي ولذيذ.",
   },
 ];
+
 let products = document.getElementById("products");
 let listProduct = document.querySelector(".products-list");
-meals.forEach((meal,index) => {
+meals.forEach((meal, index) => {
   listProduct.innerHTML += `
- 
   <div class="meal" onclick="getProduct(${index})">
-     <a href="/product.html"> <img src="${meal.image}" alt="${meal.name}"></a>
+  
+     <img src="${meal.image}" alt="${meal.name}">
       <div class="des-meal">
       <h3>${meal.name}</h3>
       <div class="rating">${"⭐".repeat(Math.round(meal.rating))}</div>
@@ -195,26 +204,27 @@ meals.forEach((meal,index) => {
       ? `<span class="old-price">${meal.currency} ${meal.oldPrice}</span>`
       : ""
   }</p>
- 
-      <button>${meal.buttonText} <i class="fa-solid fa-cart-plus"></i></button>
+      <button>أضف إلى العربة </button>
       </div>
       </div>
        </div>
        `;
 });
 
-function getProduct(id){
-console.log(meals[id]);
+function getProduct(index) {
+  localStorage.setItem("productData", JSON.stringify(meals[index]));
+  window.location.href = "/product.html";
 }
-
 
 let weeklyContainer = document.querySelector(".offer-card");
 const weekendOffers = [
   {
-    nameOffer: "مكرونة بالسبانخ والخضروات",
+    name: "مكرونة بالسبانخ والخضروات",
+    description:
+      "وجبة متكاملة من الدجاج المشوي بتتبيلة مميزة، مقدمة مع الخضار المشوية لمن يبحث عن طعام صحي ولذيذ.",
     rating: 4.5,
     img: "/assets/Vector.png",
-    originalPrice: 210.0,
+    price: 210.0,
     discountedPrice: 170.0,
     currency: "ج.م",
     days: 20,
@@ -228,10 +238,12 @@ const weekendOffers = [
     btnOffer: "اضف للعربه",
   },
   {
-    nameOffer: "سلطة البطاطس والمايونيز",
+    name: "سلطة البطاطس والمايونيز",
+    description:
+      "وجبة متكاملة من الدجاج المشوي بتتبيلة مميزة، مقدمة مع الخضار المشوية لمن يبحث عن طعام صحي ولذيذ.",
     img: "/assets/Vector.png",
     rating: 4.5,
-    originalPrice: 200,
+    price: 200,
     discountedPrice: 140,
     currency: "ج.م",
     days: 14,
@@ -246,21 +258,21 @@ const weekendOffers = [
   },
 ];
 
-weekendOffers.forEach((offer) => {
+weekendOffers.forEach((offer, i) => {
   weeklyContainer.innerHTML += `
-  <div class="card-double">
+  <div class="card-double" onclick="getoffers(${i})">
   <img  class="like2-img" src="${offer.image}" >
   <div class="card-body">
   <div class="behind">
   <img  class="like-img"src="${offer.img}">
-   <h3>${offer.nameOffer}</h3>
+   <h3>${offer.name}</h3>
    </div>
   
    <div class="rating-offers">${"⭐".repeat(Math.round(offer.rating))}</div>
   
     <div class="discounted-price">
         <p class="discount">${offer.discountedPrice} ${offer.currency}</p>
-        <p  class="original">${offer.originalPrice} ${offer.currency}</p>
+        <p  class="original">${offer.price} ${offer.currency}</p>
     </div>
     <div class="time-list">
     <div class="number-time">
@@ -283,6 +295,11 @@ weekendOffers.forEach((offer) => {
 </div>
        `;
 });
+
+function getoffers(i) {
+  localStorage.setItem("productData", JSON.stringify(weekendOffers[i]));
+  window.location.href = "/product.html";
+}
 // spacial-offer
 
 const specialOffer = document.querySelector(".banner-img");
@@ -484,4 +501,3 @@ footerContainer.innerHTML += `
   </div>
    </div>
   `;
-
