@@ -191,7 +191,9 @@ p {
 }
 .btn-count span:hover {
   color: var(--primary-color);
+  transform: scale(1.1);
 }
+
 .btn-count button {
   font-size: 18px;
   margin-right: 5px;
@@ -218,11 +220,11 @@ p {
   cursor: pointer;
   width: 90%;
   border: 1px solid #80808054;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   margin: auto;
 }
 .btn:hover {
-  color: var(--primary-color);
+  transform: scale(0.9);
 }
 .original-price {
   font-size: 18px;

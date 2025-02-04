@@ -1,22 +1,13 @@
 // single product
 let containerProduct = document.querySelector(".single-product");
-const productSingleData = {
-  name: "دجاج مشوي مع الخضار",
-  desProduct:
-    "تتميز وجبة الدجاج المشوي بالأعشاب بمذاقها الرائع الذي يجمع بين النكهات الغنية والطبيعية يتم تحضير الدجاج بعناية، حيث يُتبل بمزيج من الأعشاب الطازجة مثل الروزماري، الزعتر، والبقدونس، مع لمسة من الثوم والليمون لإضفاء نكهة منعشة ومتوازنة",
-  img: "assets/delicious-chicken-biryani-7lw.png",
-  price: 200,
-  currency: "ج.م",
-  rating: "⭐⭐⭐⭐⭐",
-  ratingNumber: "(10)",
-  ratingText: "أضف للمفضلة",
-  buttonText: "أضف إلى العربة",
-};
+
+
+const productSingleData = JSON.parse(localStorage.getItem("productData"))
 
 containerProduct.innerHTML = `
   
   <div class="single-product-image">
-  <img src="${productSingleData.img}"/>
+  <img src="${productSingleData.image}"/>
   </div>
   <div class="single-product-description">
   <div class="name-description">
@@ -25,7 +16,7 @@ containerProduct.innerHTML = `
   </div>
   <div class="add-rating">
   <div class="ratting">
-  <p>${productSingleData.rating}<span> تقييمات${productSingleData.ratingNumber}</span></p>
+  <p>${"⭐".repeat(Math.round(productSingleData.rating))}<span> (10) تقييمات</span></p>
   </div>
   <div class="add-to">
    
@@ -34,7 +25,7 @@ containerProduct.innerHTML = `
     <span>مشاركة المنتج<i class="fa-solid fa-share-nodes"></i></span>
 </div>
 </div>
-<p> ${productSingleData.desProduct}</p>
+<p> ${productSingleData.description}</p>
 <div class="des">
   <span class="original-price"> ${productSingleData.price} ج.م </span>
   <div class="count">
@@ -43,7 +34,7 @@ containerProduct.innerHTML = `
  </div>
   </div>
 
-  <button class="btn">${productSingleData.buttonText}</button>
+  <button class="btn">أضف إلى العربة</button>
   </div>
   </div>
   `;
