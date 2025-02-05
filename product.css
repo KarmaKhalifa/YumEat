@@ -222,6 +222,8 @@ p {
   border: 1px solid #80808054;
   transition: all 0.3s ease;
   margin: auto;
+  font-size: 18px;
+  font-weight: bold;
 }
 .btn:hover {
   transform: scale(0.9);
@@ -238,8 +240,7 @@ p {
     gap: 20px;
   }
   .btn {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 18px;
   }
 }
 /* footer */
