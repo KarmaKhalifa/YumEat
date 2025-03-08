@@ -191,9 +191,9 @@ let products = document.getElementById("products");
 let listProduct = document.querySelector(".products-list");
 meals.forEach((meal, index) => {
   listProduct.innerHTML += `
-  <div class="meal" onclick="getProduct(${index})">
+  <div class="meal" >
   
-     <img src="${meal.image}" alt="${meal.name}">
+     <img src="${meal.image}" onclick="getProduct(${index})" alt="${meal.name}">
       <div class="des-meal">
       <h3>${meal.name}</h3>
       <div class="rating">${"⭐".repeat(Math.round(meal.rating))}</div>
@@ -204,7 +204,7 @@ meals.forEach((meal, index) => {
       ? `<span class="old-price">${meal.currency} ${meal.oldPrice}</span>`
       : ""
   }</p>
-      <button>أضف إلى العربة </button>
+      <button onclick="addToCart(${index})">أضف إلى العربة </button>
       </div>
       </div>
        </div>
@@ -260,18 +260,20 @@ const weekendOffers = [
 
 weekendOffers.forEach((offer, i) => {
   weeklyContainer.innerHTML += `
-  <div class="card-double" onclick="getoffers(${i})">
-  <img  class="like2-img" src="${offer.image}" >
+  <div class="card-double">
+  <img  class="like2-img" onclick="getoffers(${i})" src="${offer.image}" >
   <div class="card-body">
   <div class="behind">
   <img  class="like-img"src="${offer.img}">
-   <h3>${offer.name}</h3>
+  <h3 data-name="بيتزا"> ${offer.name}</h3>      
    </div>
   
    <div class="rating-offers">${"⭐".repeat(Math.round(offer.rating))}</div>
   
     <div class="discounted-price">
-        <p class="discount">${offer.discountedPrice} ${offer.currency}</p>
+        <p class="discount"  data-name="بيتزا">${offer.discountedPrice} ${
+    offer.currency
+  }</p>
         <p  class="original">${offer.price} ${offer.currency}</p>
     </div>
     <div class="time-list">
@@ -289,7 +291,9 @@ weekendOffers.forEach((offer, i) => {
        <span class="number-hours"> ${offer.numDay}</span>
         </p>
         </div>   
-       <button class="add-to-cart" >${offer.btnOffer}</button>
+       <button class="add-to-cart" onclick="addOfferToCart(${i})">${
+    offer.btnOffer
+  }</button>
        </div>
 </div>
 </div>
@@ -501,3 +505,22 @@ footerContainer.innerHTML += `
   </div>
    </div>
   `;
+// function add to cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(index) {
+  cart.push(meals[index]);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  getDataFromLocalStorage();
+}
+
+function addOfferToCart(index) {
+  cart.push(weekendOffers[index]); 
+  localStorage.setItem("cart", JSON.stringify(cart));
+  getDataFromLocalStorage();
+}
+document.addEventListener("DOMContentLoaded", getDataFromLocalStorage);
+
+function getDataFromLocalStorage() {
+  let numCart = document.getElementById("cart-count");
+  numCart.textContent = cart.length;
+}

@@ -125,6 +125,23 @@ header .icons-header svg path {
 header .icons-header svg:hover path {
   stroke: var(--primary-color);
 }
+.icons-salla {
+  position: relative;
+}
+.icons-salla #cart-count {
+  background-color: var(--primary-color);
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 /* responsive  header*/
 @media (max-width: 767px) {
   .container {
@@ -479,7 +496,6 @@ header .icons-header svg:hover path {
   }
   .meal img {
     height: 50%;
-   
   }
   .meal .des-meal {
     height: 55%;
