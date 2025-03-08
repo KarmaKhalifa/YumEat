@@ -1,8 +1,7 @@
 // single product
 let containerProduct = document.querySelector(".single-product");
 
-
-const productSingleData = JSON.parse(localStorage.getItem("productData"))
+const productSingleData = JSON.parse(localStorage.getItem("productData"));
 
 containerProduct.innerHTML = `
   
@@ -16,7 +15,9 @@ containerProduct.innerHTML = `
   </div>
   <div class="add-rating">
   <div class="ratting">
-  <p>${"⭐".repeat(Math.round(productSingleData.rating))}<span> (10) تقييمات</span></p>
+  <p>${"⭐".repeat(
+    Math.round(productSingleData.rating)
+  )}<span> (10) تقييمات</span></p>
   </div>
   <div class="add-to">
    
@@ -34,7 +35,8 @@ containerProduct.innerHTML = `
  </div>
   </div>
 
-  <button class="btn">أضف إلى العربة</button>
+  <button class="btn" data-name="سلطة السبانخ مع اللحم" 
+        data-price="110">أضف إلى العربة</button>
   </div>
   </div>
   `;
@@ -112,3 +114,21 @@ footerContainer.innerHTML += `
     </div>
      </div>
     `;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(index) {
+  cart.push(meals[index]);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  getDataFromLocalStorage();
+}
+
+function addOfferToCart(index) {
+  cart.push(weekendOffers[index]);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  getDataFromLocalStorage();
+}
+document.addEventListener("DOMContentLoaded", getDataFromLocalStorage);
+
+function getDataFromLocalStorage() {
+  let numCart = document.getElementById("cart-count");
+  numCart.textContent = cart.length;
+}
