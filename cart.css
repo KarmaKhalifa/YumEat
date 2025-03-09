@@ -9,6 +9,12 @@
 :root {
   --primary-color: #eaa22a;
 }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 30px;
+}
 
 body {
   background-color: #efefef;
@@ -317,6 +323,7 @@ footer {
   text-align: center;
   padding: 6px 10px;
   font-size: 16px;
+  width: 100%;
 }
 .add-btn {
   padding: 10px 15px;
@@ -360,16 +367,39 @@ p {
 }
 #finish-order {
   padding: 10px 40px;
-  width: 266px;
+  width: 90%;
   color: white;
   background-color: var(--primary-color);
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   border: none;
+  margin: auto;
 }
 
 .hr {
   margin: 20px auto;
   width: 85%;
+}
+@media (max-width: 767px) {
+  .container {
+    padding-inline: 10px;
+  }
+  .cart-page {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cart-page #cart-total {
+    width: 98%;
+  }
+  #cart-items {
+    width: 98%;
+  }
+  #cart-items .cart .name-cart {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  #cart-items .cart img {
+    max-width: 88px;
+  }
 }

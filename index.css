@@ -24,6 +24,9 @@ body {
   margin: 0 auto;
   padding-inline: 30px;
 }
+main{
+overflow: hidden;
+}
 
 /* side menu */
 .parent-menu {
