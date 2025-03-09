@@ -116,7 +116,27 @@
       </div>
     </header>
     <main>
-      <div id="cart-items"></div>
+      <div class="cart-page">
+        <div id="cart-items"></div>
+        <div id="cart-total">
+          <div class="cart-total-title">
+            <p class="text">مجموع المنتجات</p>
+            <p><span id="total-num">0</span> ج.م</p>
+          </div>
+          <p class="text-discount"> هل لديك كود خصم</p>
+          <div class="cart-btn">
+          <input type="text" id="discount-code" placeholder=" أدخل كود الخصم" />
+          <button class="add-btn" >اضافه</button>
+        </div>
+          <hr class="hr" />
+          <div class="cart-total-price">
+            <p class="text-total">الإجمالى</p>
+            <p><span id="finish-num"> ج.م</span> 0</p>
+          </div>
+          <p class="dis-text">الاسعار شاملة للضريبة</p>
+          <button  id="finish-order" >إتمام الطلب</button>
+        </div>
+      </div>
     </main>
     <footer>
       <div class="container footer" id="footer"></div>
