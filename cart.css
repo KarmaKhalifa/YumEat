@@ -249,6 +249,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 65%;
 }
 #cart-items .cart {
   display: flex;
@@ -256,23 +257,119 @@ footer {
   justify-content: space-between;
   background-color: #ffffff;
   padding: 5px;
+  border-radius: 4px;
 }
-#cart-items .cart .price-cart{
+#cart-items .cart .price-cart {
   color: var(--primary-color);
   font-size: 20px;
   font-weight: bold;
 }
-#cart-items .cart img{
+#cart-items .cart img {
   max-width: 110px;
 }
 
-#cart-items .cart .name-cart{
+#cart-items .cart .name-cart {
   color: #191919;
   font-size: 20px;
   font-weight: bold;
 }
-#cart-items .cart input{
-  width: 40px;
-    height: 30px;
-    text-align: center;
+#cart-items .cart input {
+  width: 60px;
+  height: 30px;
+  text-align: center;
+}
+.cart-page {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 25px;
+  margin-top: 20px;
+}
+.cart-page #cart-total {
+  background: white;
+  height: fit-content;
+  width: 35%;
+  padding: 20px;
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.cart-page #cart-total .cart-total-title {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.text-discount {
+  color: #85898ed6;
+  text-align: end;
+  font-size: 15px;
+}
+
+.cart-btn {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#discount-code {
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+.add-btn {
+  padding: 10px 15px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: 16px;
+  font-size: 18px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.cart-total-price {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.dis-text {
+  color: gray;
+  text-align: end;
+  font-size: 17px;
+}
+.text-total {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+.text {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+}
+#total-num {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+}
+p {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+}
+#finish-order {
+  padding: 10px 40px;
+  width: 266px;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+
+.hr {
+  margin: 20px auto;
+  width: 85%;
 }
