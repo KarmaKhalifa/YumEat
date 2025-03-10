@@ -139,7 +139,9 @@ header .icons-header svg:hover path {
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  text-align: center;
+  text-align: center;  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   font-size: 15px;
   font-weight: 500;
@@ -678,6 +680,10 @@ header .icons-header svg:hover path {
   .rating-offers {
     font-size: 10px;
   }
+  .card-body h3 {
+    font-size: 12px;
+    width: 100%;
+  }
 
   .discounted-price .discount {
     font-size: 14px;
@@ -688,7 +694,7 @@ header .icons-header svg:hover path {
     font-weight: bold;
   }
   .add-to-cart {
-    padding: 12px 50px;
+    padding: 10px 40px;
   }
   #offer-weekly h2 {
     font-size: 20px;
