@@ -1,4 +1,3 @@
-// footer
 const websiteData = {
   about: {
     imgWebsite: "/assets/logo.png",
@@ -31,126 +30,119 @@ const websiteData = {
 };
 
 let footerContainer = document.querySelector(".footer");
-
 footerContainer.innerHTML += `
-      <div class="myAccount">
-      <h2> ${websiteData.accounts.myAccount}</h2>
-      <p>${websiteData.accounts.account}</p>
-      <p>${websiteData.accounts.cart}</p>
-      <p>${websiteData.accounts.favorites}</p>
-      </div>
-      <div class="links">
-      <h2>${websiteData.url.links}</h2>
-      <p>${websiteData.url.aboutUs}</p>
-      <p>${websiteData.url.techSupport}</p>
-      <p>${websiteData.url.privacyPolicy}</p>
-      <p>${websiteData.url.termsAndConditions}</p>
-      </div>
-      
-      <div class="contact">
-      <h2>${websiteData.conected.call}</h2>
-     <div class="call-phone">
+  <div class="myAccount">
+    <h2>${websiteData.accounts.myAccount}</h2>
+    <p>${websiteData.accounts.account}</p>
+    <p>${websiteData.accounts.cart}</p>
+    <p>${websiteData.accounts.favorites}</p>
+  </div>
+  <div class="links">
+    <h2>${websiteData.url.links}</h2>
+    <p>${websiteData.url.aboutUs}</p>
+    <p>${websiteData.url.techSupport}</p>
+    <p>${websiteData.url.privacyPolicy}</p>
+    <p>${websiteData.url.termsAndConditions}</p>
+  </div>
+  <div class="contact">
+    <h2>${websiteData.conected.call}</h2>
+    <div class="call-phone">
       <p class="whatsapp">${websiteData.conected.whatsappPhone}</p>
-       <p>${websiteData.conected.mobile}</p>
-       </div>
-       <div class="call-mobile">
-       <p class="whatsapp">${websiteData.conected.whatsapp}</p>
-        <p>${websiteData.conected.phone}</p>
-        </div>
-      </div>
-      <div class="socialMedia">
-      <img src="${websiteData.about.imgWebsite}"/>
-      <div class="des-social">
+      <p>${websiteData.conected.mobile}</p>
+    </div>
+    <div class="call-mobile">
+      <p class="whatsapp">${websiteData.conected.whatsapp}</p>
+      <p>${websiteData.conected.phone}</p>
+    </div>
+  </div>
+  <div class="socialMedia">
+    <img src="${websiteData.about.imgWebsite}" />
+    <div class="des-social">
       <p>${websiteData.about.socialMedia}</p>
       <div class="links-social">
-      <a href="#"><i class="${websiteData.about.facebook}"></i></a>
-      <a href="#"><i class="${websiteData.about.twitter}"></i></a>
-      <a href="#"><i class="${websiteData.about.instagram}"></i></a>
-      <a href="#"><i class="${websiteData.about.snapchat}"></i></a>
+        <a href="#"><i class="${websiteData.about.facebook}"></i></a>
+        <a href="#"><i class="${websiteData.about.twitter}"></i></a>
+        <a href="#"><i class="${websiteData.about.instagram}"></i></a>
+        <a href="#"><i class="${websiteData.about.snapchat}"></i></a>
       </div>
-      </div>
-       </div>
-     `;
+    </div>
+  </div>
+`;
+
 let cartPage = document.querySelector(".cart-page");
 let cartItemsContainer = document.getElementById("cart-items");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let numCart = document.getElementById("cart-count");
 
 function buildItems() {
-  if (cart.length != 0) {
-    let cartItemsContainer = document.getElementById("cart-items");
+  let cartItemsContainer = document.getElementById("cart-items");
+
+  if (cart.length !== 0) {
     cartItemsContainer.innerHTML = "";
-    cart.forEach((cart, index) => {
+    cart.forEach((item, index) => {
       cartItemsContainer.innerHTML += `
       <div class="cart">
-    <img src="${cart.image}"/>
-    <p class="name-cart">${cart.name}</p>
-      <div class= "count"> 
-        <button onclick="increaseQuantity(${index})">+</button>
-          <span class="quantity">${cart.quantity}</span> 
-        <button onclick="decreaseQuantity(${index})">-</button>
+        <img src="${item.image}" />
+        <p class="name-cart">${item.name}</p>
+        <div class="count">
+          <button onclick="increaseQuantity(${index})">+</button>
+          <span class="quantity">${item.quantity}</span>
+          <button onclick="decreaseQuantity(${index})">-</button>
+        </div>
+        <span class="price-cart">${item.price}ج.م</span>
+        <i class="fa-solid fa-xmark" onclick="removeItem(${index})"></i>
       </div>
-    <span class="price-cart">${cart.price}ج.م</span>
-    <i class="fa-solid fa-xmark"></i>
-    </div>
-    `;
+      `;
     });
   } else {
     cartPage.innerHTML = `
-    <div class="empty-cart">
-    <i class="fa-solid fa-cart-shopping"></i>
-    <p>السلة فارغة</p>
-    </div>
+      <div class="empty-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p>السلة فارغة</p>
+      </div>
     `;
   }
 }
-buildItems();
+
 function increaseQuantity(index) {
   cart[index].quantity += 1;
   updateLocalStorage();
   buildItems();
 }
 
-// تقليل كمية المنتج (وحذفه إذا وصلت إلى 0)
 function decreaseQuantity(index) {
   if (cart[index].quantity > 1) {
     cart[index].quantity -= 1;
   } else {
-    cart.splice(index, 1); // حذف المنتج إذا وصلت الكمية لـ 0
+    removeItem(index);
   }
 
   updateLocalStorage();
   buildItems();
 }
-function updateLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateLocalStorage();
+  buildItems();
 }
 
-document.addEventListener("DOMContentLoaded", getDataFromLocalStorage);
+function updateLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  numCart.textContent = cart.length;
+}
 
-let numCart = document.getElementById("cart-count");
+document.addEventListener("DOMContentLoaded", () => {
+  getDataFromLocalStorage();
+  buildItems();
+});
+
 function getDataFromLocalStorage() {
   numCart.textContent = cart.length;
 }
 
-let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-let totalFoot = 0;
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".fa-xmark").forEach((button) => {
-    button.addEventListener("click", function () {
-      let cartItem = this.parentElement;
-      let itemName = cartItem.querySelector(".name-cart").textContent.trim();
-      cartItems = cartItems.filter((item) => item.name !== itemName);
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-      cartItem.remove();
-      getTotalPrice();
-      numCart.textContent = cartItems.length;
-    });
-  });
-  getTotalPrice();
-});
-
 function getTotalPrice() {
-  let totalFoot = 0; // Initialize total sum
+  let totalFoot = 0;
 
   const totalPriceElement = document.querySelector(".total-num");
   const finishTotal = document.querySelector("#finish-num");
@@ -162,6 +154,17 @@ function getTotalPrice() {
 
     totalFoot += num;
   });
+
   totalPriceElement.innerText = totalFoot;
   finishTotal.innerText = totalFoot;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".fa-xmark").forEach((button, index) => {
+    button.addEventListener("click", function () {
+      removeItem(index);
+    });
+  });
+
+  getTotalPrice();
+});
