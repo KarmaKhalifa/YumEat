@@ -24,8 +24,8 @@ body {
   margin: 0 auto;
   padding-inline: 30px;
 }
-main{
-overflow: hidden;
+main {
+  overflow: hidden;
 }
 
 /* side menu */
@@ -156,7 +156,13 @@ header .icons-header svg:hover path {
   header .img-icons svg {
     display: block;
   }
+  .icons-salla #cart-count {
+    font-size: 15px;
+    width: 23px;
+    height: 23px;
+  }
 }
+
 /* start banner */
 .banner {
   width: 100%;
@@ -547,7 +553,9 @@ header .icons-header svg:hover path {
 .offer-card {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
+
 .offer-card .card-double {
   background-color: #fff;
   width: fit-content;
@@ -564,11 +572,7 @@ header .icons-header svg:hover path {
   justify-content: space-between;
   width: 100%;
 }
-.offer-card .like-img {
-  width: 20px;
 
-  object-fit: cover;
-}
 .offer-card .card-double .behind h3 {
   font-size: 14px;
   font-weight: bold;
@@ -660,6 +664,9 @@ header .icons-header svg:hover path {
     display: flex;
     gap: 37px;
     flex-direction: column;
+  }
+  .offer-card .card-double {
+    width: 80%;
   }
   .offer-card .card-double .behind {
     align-items: center;

@@ -11,7 +11,8 @@ containerProduct.innerHTML = `
   <div class="single-product-description">
   <div class="name-description">
   <h2>${productSingleData.name}</h2>
-  <i class="fa-regular fa-heart"></i>
+    <span class="original-price"> ${productSingleData.price} ج.م </span>
+
   </div>
   <div class="add-rating">
   <div class="ratting">
@@ -19,26 +20,14 @@ containerProduct.innerHTML = `
     Math.round(productSingleData.rating)
   )}<span> (10) تقييمات</span></p>
   </div>
-  <div class="add-to">
-   
-    </div>
     <div class="share">
     <span>مشاركة المنتج<i class="fa-solid fa-share-nodes"></i></span>
 </div>
 </div>
-<p> ${productSingleData.description}</p>
-<div class="des">
-  <span class="original-price"> ${productSingleData.price} ج.م </span>
-  <div class="count">
-  <span class="text-des">حدد الكمية</span>
- <div class="btn-count"><button>+</button><span>1</span><button>-</button></div>
- </div>
-  </div>
-
+<p style="padding-inline: 20px;"> ${productSingleData.description}</p>
   <button class="btn" data-name="سلطة السبانخ مع اللحم" 
         data-price="110">أضف إلى العربة</button>
-  </div>
-  </div>
+  </div></div>
   `;
 
 // footer
