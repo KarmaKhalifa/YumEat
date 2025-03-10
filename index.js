@@ -112,6 +112,7 @@ let meals = [
     oldPrice: 135,
     currency: "ج.م",
     rating: 4.5,
+    quantity: 0,
     description:
       "طبق شهي من البيض المطهو مع تشكيلة متنوعة من الخضار الطازجة، مناسب للإفطار الصحي.",
   },
@@ -122,6 +123,7 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 3.5,
+    quantity: 0,
     description:
       "مكرونة إيطالية مطهية مع صلصة الطماطم الطازجة وأوراق الريحان العطرية لوجبة غنية بالنكهة.",
   },
@@ -132,6 +134,7 @@ let meals = [
     oldPrice: 190,
     currency: "ج.م",
     rating: 4,
+    quantity: 0,
     description:
       "قطع دجاج مشوية بعناية مع توابل الأعشاب الطازجة، تقدم مع طبق جانبي من الخضار المشوية.",
   },
@@ -142,6 +145,7 @@ let meals = [
     oldPrice: 180,
     currency: "ج.م",
     rating: 4,
+    quantity: 0,
     description:
       "مكرونة شهية مغمورة في صلصة الطماطم الحمراء الغنية، مضاف إليها التوابل الإيطالية التقليدية.",
   },
@@ -152,6 +156,7 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 5,
+    quantity: 0,
     description:
       "بيتزا محضرة بعجينة طرية مع طبقة غنية من الجبن، الخضار الطازجة، وقطع اللحم الشهية.",
   },
@@ -162,6 +167,7 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 4,
+    quantity: 0,
     description:
       "طبق نباتي مميز من الحمص المطهو بصلصة الكاري الحارة، مضاف إليه مزيج من البهارات الهندية العطرية.",
   },
@@ -172,6 +178,7 @@ let meals = [
     oldPrice: null,
     currency: "ج.م",
     rating: 4.5,
+    quantity: 0,
     description:
       "سلطة طازجة من السبانخ الغني بالعناصر الغذائية، مضاف إليها قطع اللحم المشوي والتتبيلة المميزة.",
   },
@@ -182,6 +189,7 @@ let meals = [
     oldPrice: 180,
     currency: "ج.م",
     rating: 4.5,
+    quantity: 0,
     description:
       "وجبة متكاملة من الدجاج المشوي بتتبيلة مميزة، مقدمة مع الخضار المشوية لمن يبحث عن طعام صحي ولذيذ.",
   },
@@ -204,7 +212,9 @@ meals.forEach((meal, index) => {
       ? `<span class="old-price">${meal.currency} ${meal.oldPrice}</span>`
       : ""
   }</p>
-      <button onclick="addToCart(${index})">أضف إلى العربة </button>
+      <button onclick="addToCart(${index}, '${
+    meal.name
+  }')">أضف إلى العربة </button>
       </div>
       </div>
        </div>
@@ -226,6 +236,7 @@ const weekendOffers = [
     img: "/assets/Vector.png",
     price: 210.0,
     discountedPrice: 170.0,
+    quantity: 0,
     currency: "ج.م",
     days: 20,
     hours: 16,
@@ -245,6 +256,7 @@ const weekendOffers = [
     rating: 4.5,
     price: 200,
     discountedPrice: 140,
+    quantity: 0,
     currency: "ج.م",
     days: 14,
     hours: 13,
@@ -263,13 +275,8 @@ weekendOffers.forEach((offer, i) => {
   <div class="card-double">
   <img  class="like2-img" onclick="getoffers(${i})" src="${offer.image}" >
   <div class="card-body">
-  <div class="behind">
-  <img  class="like-img"src="${offer.img}">
   <h3 data-name="بيتزا"> ${offer.name}</h3>      
-   </div>
-  
    <div class="rating-offers">${"⭐".repeat(Math.round(offer.rating))}</div>
-  
     <div class="discounted-price">
         <p class="discount"  data-name="بيتزا">${offer.discountedPrice} ${
     offer.currency
@@ -507,14 +514,22 @@ footerContainer.innerHTML += `
   `;
 // function add to cart
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-function addToCart(index) {
-  cart.push(meals[index]);
+function addToCart(index, name) {
+  // cart.push(meals[index]);
+  let existingItem = cart.find((item) => item.name === name);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    let newItem = { ...meals[index], quantity: 1 };
+    cart.push(newItem);
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   getDataFromLocalStorage();
 }
 
 function addOfferToCart(index) {
-  cart.push(weekendOffers[index]); 
+  cart.push(weekendOffers[index]);
   localStorage.setItem("cart", JSON.stringify(cart));
   getDataFromLocalStorage();
 }

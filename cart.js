@@ -74,31 +74,84 @@ footerContainer.innerHTML += `
 let cartItemsContainer = document.getElementById("cart-items");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-cart.forEach((cart, index) => {
-  cartItemsContainer.innerHTML += `
-  <div class="cart">
-<img src="${cart.image}"/>
-<p class="name-cart">${cart.name}</p>
-<input type="number" id="quantity" name="quantity"  value="1" min="1" >
-<span class="price-cart">${cart.price}ج.م</span>
-<i class="fa-solid fa-xmark"></i>
-</div>
-`;
-});
-function addToCart(index) {
-  cart.push(meals[index]);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  getDataFromLocalStorage();
+function buildItems() {
+  let cartItemsContainer = document.getElementById("cart-items");
+  cartItemsContainer.innerHTML = "";
+  cart.forEach((cart, index) => {
+    cartItemsContainer.innerHTML += `
+    <div class="cart">
+  <img src="${cart.image}"/>
+  <p class="name-cart">${cart.name}</p>
+    <div class= "count"> 
+      <button onclick="increaseQuantity(${index})">+</button>
+        <span class="quantity">${cart.quantity}</span> 
+      <button onclick="decreaseQuantity(${index})">-</button>
+    </div>
+  <span class="price-cart">${cart.price}ج.م</span>
+  <i class="fa-solid fa-xmark"></i>
+  </div>
+  `;
+  });
+}
+buildItems();
+function increaseQuantity(index) {
+  cart[index].quantity += 1;
+  updateLocalStorage();
+  buildItems();
 }
 
-function addOfferToCart(index) {
-  cart.push(weekendOffers[index]);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  getDataFromLocalStorage();
+// تقليل كمية المنتج (وحذفه إذا وصلت إلى 0)
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1); // حذف المنتج إذا وصلت الكمية لـ 0
+  }
+
+  updateLocalStorage();
+  buildItems();
 }
+function updateLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 document.addEventListener("DOMContentLoaded", getDataFromLocalStorage);
 
+let numCart = document.getElementById("cart-count");
 function getDataFromLocalStorage() {
-  let numCart = document.getElementById("cart-count");
   numCart.textContent = cart.length;
+}
+
+let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+let totalFoot = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".fa-xmark").forEach((button) => {
+    button.addEventListener("click", function () {
+      let cartItem = this.parentElement;
+      let itemName = cartItem.querySelector(".name-cart").textContent.trim();
+      cartItems = cartItems.filter((item) => item.name !== itemName);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      cartItem.remove();
+      getTotalPrice();
+      numCart.textContent = cartItems.length;
+    });
+  });
+  getTotalPrice();
+});
+
+function getTotalPrice() {
+  let totalFoot = 0; // Initialize total sum
+
+  const totalPriceElement = document.querySelector(".total-num");
+  const finishTotal = document.querySelector("#finish-num");
+
+  document.querySelectorAll(".price-cart").forEach((item) => {
+    let priceText = item.innerText;
+    let priceNumber = priceText.replace(/\D/g, "");
+    let num = Number(priceNumber);
+
+    totalFoot += num;
+  });
+  totalPriceElement.innerText = totalFoot;
+  finishTotal.innerText = totalFoot;
 }
