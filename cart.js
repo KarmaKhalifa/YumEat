@@ -71,27 +71,37 @@ footerContainer.innerHTML += `
       </div>
        </div>
      `;
+let cartPage = document.querySelector(".cart-page");
 let cartItemsContainer = document.getElementById("cart-items");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function buildItems() {
-  let cartItemsContainer = document.getElementById("cart-items");
-  cartItemsContainer.innerHTML = "";
-  cart.forEach((cart, index) => {
-    cartItemsContainer.innerHTML += `
-    <div class="cart">
-  <img src="${cart.image}"/>
-  <p class="name-cart">${cart.name}</p>
-    <div class= "count"> 
-      <button onclick="increaseQuantity(${index})">+</button>
-        <span class="quantity">${cart.quantity}</span> 
-      <button onclick="decreaseQuantity(${index})">-</button>
+  if (cart.length != 0) {
+    let cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = "";
+    cart.forEach((cart, index) => {
+      cartItemsContainer.innerHTML += `
+      <div class="cart">
+    <img src="${cart.image}"/>
+    <p class="name-cart">${cart.name}</p>
+      <div class= "count"> 
+        <button onclick="increaseQuantity(${index})">+</button>
+          <span class="quantity">${cart.quantity}</span> 
+        <button onclick="decreaseQuantity(${index})">-</button>
+      </div>
+    <span class="price-cart">${cart.price}ج.م</span>
+    <i class="fa-solid fa-xmark"></i>
     </div>
-  <span class="price-cart">${cart.price}ج.م</span>
-  <i class="fa-solid fa-xmark"></i>
-  </div>
-  `;
-  });
+    `;
+    });
+  } else {
+    cartPage.innerHTML = `
+    <div class="empty-cart">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <p>السلة فارغة</p>
+    </div>
+    `;
+  }
 }
 buildItems();
 function increaseQuantity(index) {

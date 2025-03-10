@@ -158,11 +158,7 @@ header .icons-header svg:hover path {
   header .img-icons svg {
     display: block;
   }
-  .icons-salla #cart-count {
-    font-size: 15px;
-    width: 23px;
-    height: 23px;
-  }
+
 }
 
 /* start banner */
@@ -669,7 +665,7 @@ header .icons-header svg:hover path {
   }
   
   .offer-card .card-double {
-    width: 80%;
+    width: 100%;
   }
   .offer-card .card-double .behind {
     align-items: center;

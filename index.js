@@ -298,9 +298,9 @@ weekendOffers.forEach((offer, i) => {
        <span class="number-hours"> ${offer.numDay}</span>
         </p>
         </div>   
-       <button class="add-to-cart" onclick="addOfferToCart(${i})">${
-    offer.btnOffer
-  }</button>
+       <button class="add-to-cart" onclick="addOfferToCart(${i},'${
+    offer.name
+  }')">${offer.btnOffer}</button>
        </div>
 </div>
 </div>
@@ -515,9 +515,7 @@ footerContainer.innerHTML += `
 // function add to cart
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 function addToCart(index, name) {
-  // cart.push(meals[index]);
   let existingItem = cart.find((item) => item.name === name);
-
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
@@ -528,8 +526,14 @@ function addToCart(index, name) {
   getDataFromLocalStorage();
 }
 
-function addOfferToCart(index) {
-  cart.push(weekendOffers[index]);
+function addOfferToCart(index, name) {
+  let existingItem = cart.find((item) => item.name === name);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    let newItem = { ...weekendOffers[index], quantity: 1 };
+    cart.push(newItem);
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   getDataFromLocalStorage();
 }

@@ -25,8 +25,7 @@ containerProduct.innerHTML = `
 </div>
 </div>
 <p style="padding-inline: 20px;"> ${productSingleData.description}</p>
-  <button class="btn" data-name="سلطة السبانخ مع اللحم" 
-        data-price="110">أضف إلى العربة</button>
+  <button class="btn" onclick="addToCart()">أضف إلى العربة</button>
   </div></div>
   `;
 
@@ -104,14 +103,14 @@ footerContainer.innerHTML += `
      </div>
     `;
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-function addToCart(index) {
-  cart.push(meals[index]);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  getDataFromLocalStorage();
-}
-
-function addOfferToCart(index) {
-  cart.push(weekendOffers[index]);
+function addToCart() {
+  let existingItem = cart.find((item) => item.name === productSingleData.name);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    let newItem = { ...productSingleData, quantity: 1 };
+    cart.push(newItem);
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   getDataFromLocalStorage();
 }
