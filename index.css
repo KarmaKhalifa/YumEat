@@ -667,6 +667,7 @@ header .icons-header svg:hover path {
     gap: 37px;
     flex-direction: column;
   }
+  
   .offer-card .card-double {
     width: 80%;
   }
@@ -681,7 +682,7 @@ header .icons-header svg:hover path {
     font-size: 10px;
   }
   .card-body h3 {
-    font-size: 12px;
+    font-size: 11px;
     width: 100%;
   }
 
