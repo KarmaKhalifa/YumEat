@@ -89,6 +89,9 @@ header .icons-header svg:hover path {
   right: -5px;
   top: -5px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
   text-align: center;
@@ -417,11 +420,20 @@ select {
   #cart-items {
     width: 98%;
   }
+  #cart-items .cart {
+    gap: 11px;
+  }
   #cart-items .cart .name-cart {
     font-size: 10px;
     font-weight: 600;
   }
   #cart-items .cart img {
     max-width: 88px;
+  }
+  #cart-items .cart button {
+    padding: 2px 5px;
+  }
+  #cart-items .cart .price-cart {
+    font-size: 18px;
   }
 }
