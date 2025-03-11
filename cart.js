@@ -108,7 +108,9 @@ function increaseQuantity(index) {
   cart[index].quantity += 1;
   updateLocalStorage();
   buildItems();
+  setTimeout(getTotalPrice, 0); // تأخير الحساب لضمان تحديث الـ DOM أولاً
 }
+
 
 function decreaseQuantity(index) {
   if (cart[index].quantity > 1) {
@@ -116,15 +118,17 @@ function decreaseQuantity(index) {
   } else {
     removeItem(index);
   }
-
   updateLocalStorage();
   buildItems();
+  setTimeout(getTotalPrice, 0);
 }
+
 
 function removeItem(index) {
   cart.splice(index, 1);
   updateLocalStorage();
   buildItems();
+  getTotalPrice();
 }
 
 function updateLocalStorage() {
@@ -143,26 +147,21 @@ function getDataFromLocalStorage() {
 
 function getTotalPrice() {
   let totalFoot = 0;
-
-  const totalPriceElement = document.querySelector(".total-num");
-  const finishTotal = document.querySelector("#finish-num");
-
-  document.querySelectorAll(".price-cart").forEach((item) => {
-    let priceText = item.innerText;
-    let priceNumber = priceText.replace(/\D/g, "");
-    let num = Number(priceNumber);
-
-    totalFoot += num;
+  
+  cart.forEach((item) => {
+    totalFoot += item.price * item.quantity; // حساب السعر بناءً على الكمية
   });
 
-  totalPriceElement.innerText = totalFoot;
-  finishTotal.innerText = totalFoot;
+  document.querySelector(".total-num").innerText = totalFoot;
+  document.querySelector("#finish-num").innerText = totalFoot;
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".fa-xmark").forEach((button, index) => {
     button.addEventListener("click", function () {
       removeItem(index);
+      getTotalPrice();
     });
   });
 
